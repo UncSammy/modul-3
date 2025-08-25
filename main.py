@@ -1,53 +1,49 @@
-name = input("Anna nimesi: ")
+# 1. Kuha alamittainen vai ei
+kuha = float(input("Anna kuhan pituus (cm): "))
+if kuha < 37:
+    puuttuu = 37 - kuha
+    print(f"Laske kuha takaisin järveen, puuttuu {puuttuu:.1f} cm.")
+else:
+    print("Kuha on sallittua pyyntimittaa.")
 
+# 2. Laivan hyttiluokka
+luokka = input("Anna hyttiluokka (LUX, A, B, C): ").upper()
 
-print(f"Terve, {name}!")
-import math
+if luokka == "LUX":
+    print("LUX on parvekkeellinen hytti yläkannella.")
+elif luokka == "A":
+    print("A on ikkunallinen hytti autokannen yläpuolella.")
+elif luokka == "B":
+    print("B on ikkunaton hytti autokannen yläpuolella.")
+elif luokka == "C":
+    print("C on ikkunaton hytti autokannen alapuolella.")
+else:
+    print("Virheellinen hyttiluokka.")
 
+# 3. Hemoglobiiniarvo
+sukupuoli = input("Anna biologinen sukupuoli (mies/nainen): ").lower()
+hemo = int(input("Anna hemoglobiiniarvo (g/l): "))
 
-print("YMPYRÄN PINTA-ALA")
-sade = float(input("Anna ympyrän säde (cm): "))
-pinta_ala = math.pi * sade ** 2
-print(f"Ympyrän pinta-ala on {pinta_ala:.2f} neliösenttimetriä\n")
+if sukupuoli == "nainen":
+    if hemo < 117:
+        print("Hemoglobiiniarvo on alhainen.")
+    elif hemo <= 175:
+        print("Hemoglobiiniarvo on normaali.")
+    else:
+        print("Hemoglobiiniarvo on korkea.")
+elif sukupuoli == "mies":
+    if hemo < 134:
+        print("Hemoglobiiniarvo on alhainen.")
+    elif hemo <= 195:
+        print("Hemoglobiiniarvo on normaali.")
+    else:
+        print("Hemoglobiiniarvo on korkea.")
+else:
+    print("Virheellinen sukupuoli.")
 
-
-print("SUORAKULMION PIIRI JA PINTA-ALA")
-kanta = float(input("Anna suorakulmion kanta (cm): "))
-korkeus = float(input("Anna suorakulmion korkeus (cm): "))
-piiri = 2 * (kanta + korkeus)
-pinta_ala = kanta * korkeus
-print(f"Suorakulmion piiri on {piiri:.2f} cm")
-print(f"Suorakulmion pinta-ala on {pinta_ala:.2f} cm²\n")
-
-
-print("KOLME KOKONAISLUKUA")
-luku1 = int(input("Anna ensimmäinen kokonaisluku: "))
-luku2 = int(input("Anna toinen kokonaisluku: "))
-luku3 = int(input("Anna kolmas kokonaisluku: "))
-summa = luku1 + luku2 + luku3
-tulo = luku1 * luku2 * luku3
-keskiarvo = summa / 3
-print(f"Lukujen summa on {summa}")
-print(f"Lukujen tulo on {tulo}")
-print(f"Lukujen keskiarvo on {keskiarvo:.2f}\n")
-
-
-print("KESKIAIKAINEN MASSA → NYKYMASSA")
-leiviskat = float(input("Anna leiviskät: "))
-naulat = float(input("Anna naulat: "))
-luodit = float(input("Anna luodit: "))
-
-
-grammat = (
-    leiviskat * 20 * 32 * 13.3 +
-    naulat * 32 * 13.3 +
-    luodit * 13.3
-)
-
-
-kilot = int(grammat // 1000)
-jäännös_grammat = grammat % 1000
-
-print(f"Massa nykymittojen mukaan: {kilot} kilogrammaa ja {jäännös_grammat:.2f} grammaa")
-
-
+# 4. Karkausvuosi
+vuosi = int(input("Anna vuosiluku: "))
+if (vuosi % 4 == 0 and vuosi % 100 != 0) or (vuosi % 400 == 0):
+    print(f"{vuosi} on karkausvuosi.")
+else:
+    print(f"{vuosi} ei ole karkausvuosi.")
